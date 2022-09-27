@@ -7,10 +7,17 @@ using namespace std;
 
 #define DIF "\n-------------------------------------------------------------------------------\n"
 
+const int ROWS = 5;
+const int COLLS = 3;
 void FillRand(int arr[], int size, int MinRand=0, int MaxRand=100);
 void FillRand(double arr[], int size, int MinRand = 0, int MaxRand = 100);
 void FillRand(float arr[], int size, int MinRand = 0, int MaxRand = 100);
 void FillRand(char arr[], int size);
+
+void FillRand(int arr[ROWS][COLLS], int ROWS, int COLLS, int MinRand = 0, int MaxRand = 100);
+void FillRand(double arr[ROWS][COLLS], int ROWS, int COLLS, int MinRand = 0, int MaxRand = 100);
+void FillRand(float arr[ROWS][COLLS], int ROWS, int COLLS, int MinRand = 0, int MaxRand = 100);
+void FillRand(char arr[ROWS][COLLS], int ROWS, int COLLS);
 
 void FillRand_1(int arr[], int size);//Заполнение массива повторяющимися числами
 
@@ -18,6 +25,11 @@ void Print (int arr[], int size);
 void Print(double arr[], int size);
 void Print(float arr[], int size);
 void Print(char arr[], int size);
+
+void Print(int arr[ROWS][COLLS], int ROWS, int COLLS);
+void Print(double arr[ROWS][COLLS], int ROWS, int COLLS);
+void Print(float arr[ROWS][COLLS], int ROWS, int COLLS);
+void Print(char arr[ROWS][COLLS], int ROWS, int COLLS);
 
 void ReversePrint(int arr[], int size);
 void ReversePrint(double arr[], int size);
@@ -87,10 +99,14 @@ void main()
 	double brr[size] = {};
 	float crr[size] = {};
 	char drr[size] = {};
+	int arr_1[ROWS][COLLS];
+	double brr_1[ROWS][COLLS];
+	float crr_1[ROWS][COLLS];
+	char drr_1[ROWS][COLLS];
 
 	srand(time(NULL));
 
-    FillRand(arr, size);
+   /* FillRand(arr, size);
 	FillRand(brr, size);
 	FillRand(crr, size);
 	FillRand(drr, size);
@@ -227,9 +243,24 @@ void main()
 	FillRand_1(arr, size);
 	Print(arr, size);
 	cout << endl << endl;
-	Search(arr, size);
+	Search(arr, size); */
 
+	cout << endl << endl << "Для продолжения нажмите Enter    ";
+	key = _getch();
+	while (key != 13) key = _getch();
+	system("CLS");
+	FillRand(arr_1, ROWS, COLLS);
+	FillRand(brr_1, ROWS, COLLS);
+	FillRand(crr_1, ROWS, COLLS);
+	FillRand(drr_1, ROWS, COLLS);
 
+	cout << "Двумерные массивы различных типов данных: " << endl<<DIF<<endl;
+
+	Print(arr_1, ROWS, COLLS);
+	Print(brr_1, ROWS, COLLS);
+	Print(crr_1, ROWS, COLLS);
+	Print(drr_1, ROWS, COLLS);
+	cout << DIF;
 }
 
 void FillRand(int arr[], int size, int MinRand, int MaxRand)
@@ -260,6 +291,52 @@ void FillRand(char arr[], int size)
 {
 	for (int i = 0;i < size;i++)
 		arr[i] = char(rand() % 255) ;
+}
+
+void FillRand(int arr[ROWS][COLLS], int ROWS, int COLLS, int MinRand, int MaxRand)
+{
+	for (int i = 0;i < ROWS;i++)
+	{
+		for (int j = 0; j < COLLS; j++)
+		{
+        arr[i][j] = (rand() % (MaxRand - MinRand) + MinRand);
+		}
+	}
+}
+
+void FillRand(double arr[ROWS][COLLS], int ROWS, int COLLS, int MinRand, int MaxRand)
+{
+	for (int i = 0;i < ROWS;i++)
+	{
+		for (int j = 0; j < COLLS; j++)
+		{
+			arr[i][j] = (rand() % (MaxRand - MinRand) + MinRand);
+			arr[i][j] /= 100;
+		}
+	}
+}
+
+void FillRand(float arr[ROWS][COLLS], int ROWS, int COLLS, int MinRand, int MaxRand)
+{
+	for (int i = 0;i < ROWS;i++)
+	{
+		for (int j = 0; j < COLLS; j++)
+		{
+			arr[i][j] = (rand() % (MaxRand - MinRand) + MinRand);
+			arr[i][j] /= 100;
+		}
+	}
+}
+
+void FillRand(char arr[ROWS][COLLS], int ROWS, int COLLS)
+{
+	for (int i = 0;i < ROWS;i++)
+	{
+		for (int j = 0; j < COLLS; j++)
+		{
+			arr[i][j] = char(rand() % 255);
+		}
+	}
 }
 
 void FillRand_1(int arr[], int size)
@@ -300,6 +377,50 @@ void Print(char arr[], int size)
 	{
 		cout << char (arr[i]) << "\t";
 	}
+}
+
+void Print(int arr[ROWS][COLLS], int ROWS, int COLLS)
+{
+	cout << endl << endl;
+	for (int i = 0;i < ROWS; i++)
+	{
+		for (int j = 0;j < COLLS; j++) cout << arr[i][j] << "\t";
+		cout << endl << endl;
+	}
+	
+}
+
+void Print(double arr[ROWS][COLLS], int ROWS, int COLLS)
+{
+	cout << endl << endl;
+	for (int i = 0;i < ROWS; i++)
+	{
+		for (int j = 0;j < COLLS; j++) cout << arr[i][j] << "\t";
+		cout << endl << endl;
+	}
+	
+}
+
+void Print(float arr[ROWS][COLLS], int ROWS, int COLLS)
+{
+	cout << endl << endl;
+	for (int i = 0;i < ROWS; i++)
+	{
+		for (int j = 0;j < COLLS; j++) cout << arr[i][j] << "\t";
+		cout << endl << endl;
+	}
+	
+}
+
+void Print(char arr[ROWS][COLLS], int ROWS, int COLLS)
+{
+	cout << endl << endl;
+	for (int i = 0;i < ROWS; i++)
+	{
+		for (int j = 0;j < COLLS; j++) cout << char(arr[i][j]) << "\t";
+		cout << endl << endl;
+	}
+	
 }
 
 void ReversePrint(int arr[], int size)
