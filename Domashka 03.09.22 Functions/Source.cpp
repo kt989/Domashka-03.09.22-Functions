@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <conio.h>
 #include <iomanip>
 #include <stdlib.h>
@@ -12,7 +12,7 @@ void FillRand(double arr[], int size, int MinRand = 0, int MaxRand = 100);
 void FillRand(float arr[], int size, int MinRand = 0, int MaxRand = 100);
 void FillRand(char arr[], int size);
 
-void FillRand_1(int arr[], int size);//Заполнение массива повторяющимися числами
+void FillRand_1(int arr[], int size);//Р—Р°РїРѕР»РЅРµРЅРёРµ РјР°СЃСЃРёРІР° РїРѕРІС‚РѕСЂСЏСЋС‰РёРјРёСЃСЏ С‡РёСЃР»Р°РјРё
 
 void Print (int arr[], int size);
 void Print(double arr[], int size);
@@ -57,7 +57,7 @@ void shiftRight(float arr[], int size, int step);
 void shiftRight(char arr[], int size, int step);
 
 
-void Sort_up(int arr[], int size); //Олег, еще добавила сортировку массива
+void Sort_up(int arr[], int size); //РћР»РµРі, РµС‰Рµ РґРѕР±Р°РІРёР»Р° СЃРѕСЂС‚РёСЂРѕРІРєСѓ РјР°СЃСЃРёРІР°
 void Sort_up(double arr[], int size);
 void Sort_up(float arr[], int size);
 void Sort_up(char arr[], int size);
@@ -67,7 +67,7 @@ void Sort_down(double arr[], int size);
 void Sort_down(float arr[], int size);
 void Sort_down(char arr[], int size);
 
-void Search(int arr[], int size);// и поиск повторяющихся чисел 
+void Search(int arr[], int size);// Рё РїРѕРёСЃРє РїРѕРІС‚РѕСЂСЏСЋС‰РёС…СЃСЏ С‡РёСЃРµР» 
 void UniqueRand(int arr[], int size);
 void UniqueRand(double arr[], int size);
 void UniqueRand(float arr[], int size);
@@ -77,8 +77,8 @@ void UniqueRand(char arr[], int size);
 void main()
 {
 	setlocale(LC_ALL, "Rus");
-	cout << endl << "Дано: массив из 10 элементов "; 
-	cout << endl << endl << "Для заполнения массива случайными числами нажмите Enter ";
+	cout << endl << "Р”Р°РЅРѕ: РјР°СЃСЃРёРІ РёР· 10 СЌР»РµРјРµРЅС‚РѕРІ "; 
+	cout << endl << endl << "Р”Р»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ РјР°СЃСЃРёРІР° СЃР»СѓС‡Р°Р№РЅС‹РјРё С‡РёСЃР»Р°РјРё РЅР°Р¶РјРёС‚Рµ Enter ";
 	int key = _getch();
 	//cout << key;
 	while (key != 13) key = _getch();
@@ -101,7 +101,7 @@ void main()
 	Print(drr, size);
 	cout << DIF;
 
-	cout << endl << endl << "Для вывода массивов в обратном порядке нажмите Enter ";
+	cout << endl << endl << "Р”Р»СЏ РІС‹РІРѕРґР° РјР°СЃСЃРёРІРѕРІ РІ РѕР±СЂР°С‚РЅРѕРј РїРѕСЂСЏРґРєРµ РЅР°Р¶РјРёС‚Рµ Enter ";
 	key = _getch();
 	while (key != 13) key = _getch();
 	ReversePrint(arr, size);
@@ -110,7 +110,7 @@ void main()
 	ReversePrint(drr, size);
 	cout << DIF<<endl<<endl;
 
-	cout << endl << endl << "Для вывода суммы элементов массивов нажмите Enter    ";
+	cout << endl << endl << "Р”Р»СЏ РІС‹РІРѕРґР° СЃСѓРјРјС‹ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІРѕРІ РЅР°Р¶РјРёС‚Рµ Enter    ";
 	key = _getch();
 	while (key != 13) key = _getch();
 	cout<< endl << endl <<Sum(arr, size) <<endl<< endl;
@@ -118,7 +118,7 @@ void main()
 	cout << Sum(crr, size) << endl << endl;
 	cout << Sum(drr, size) << endl << DIF << endl;
 
-	cout << endl << endl << "Для вывода среднего значения элементов массивов нажмите Enter    ";
+	cout << endl << endl << "Р”Р»СЏ РІС‹РІРѕРґР° СЃСЂРµРґРЅРµРіРѕ Р·РЅР°С‡РµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІРѕРІ РЅР°Р¶РјРёС‚Рµ Enter    ";
 	key = _getch();
 	while (key != 13) key = _getch();
 	cout << endl << endl << Avg(arr, size) << endl << endl;
@@ -126,7 +126,7 @@ void main()
 	cout << Avg(crr, size) << endl << endl;
 	cout << Avg(drr, size) << endl << DIF << endl;
 
-	cout << endl << endl << "Для вывода минимального значения элементов массивов нажмите Enter    ";
+	cout << endl << endl << "Р”Р»СЏ РІС‹РІРѕРґР° РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІРѕРІ РЅР°Р¶РјРёС‚Рµ Enter    ";
 	key = _getch();
 	while (key != 13) key = _getch();
 	cout << endl<< endl<< minValueIn(arr, size) << endl << endl;
@@ -134,7 +134,7 @@ void main()
 	cout << minValueIn(crr, size) << endl << endl;
 	cout << minValueIn(drr, size) << endl << DIF << endl;
 
-	cout << endl << endl << "Для вывода максимального значения элементов массивов нажмите Enter    ";
+	cout << endl << endl << "Р”Р»СЏ РІС‹РІРѕРґР° РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІРѕРІ РЅР°Р¶РјРёС‚Рµ Enter    ";
 	key = _getch();
 	while (key != 13) key = _getch();
 	cout << endl << endl << maxValueIn(arr, size) << endl << endl;
@@ -142,7 +142,7 @@ void main()
 	cout << maxValueIn(crr, size) << endl << endl;
 	cout << maxValueIn(drr, size) << endl << DIF << endl;
 
-	cout << endl << endl << "Для продолжения нажмите Enter    ";
+	cout << endl << endl << "Р”Р»СЏ РїСЂРѕРґРѕР»Р¶РµРЅРёСЏ РЅР°Р¶РјРёС‚Рµ Enter    ";
 	key = _getch();
 	while (key != 13) key = _getch();
 
@@ -153,7 +153,7 @@ void main()
 	Print(drr, size);
 	cout << DIF << endl << endl;
 
-	cout << endl << endl << "Введите число, показывающее на какое количество позиций необходимо сдвинуть массив влево:   ";
+	cout << endl << endl << "Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ, РїРѕРєР°Р·С‹РІР°СЋС‰РµРµ РЅР° РєР°РєРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР·РёС†РёР№ РЅРµРѕР±С…РѕРґРёРјРѕ СЃРґРІРёРЅСѓС‚СЊ РјР°СЃСЃРёРІ РІР»РµРІРѕ:   ";
 	int step;
 	cin >> step;
 	shiftLeft(arr, size, step);
@@ -162,7 +162,7 @@ void main()
 	shiftLeft(drr, size, step);
 	cout << DIF << endl<<endl;
 
-	cout << endl << endl << "Введите число, показывающее на какое количество позиций необходимо сдвинуть массив вправо:   ";
+	cout << endl << endl << "Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ, РїРѕРєР°Р·С‹РІР°СЋС‰РµРµ РЅР° РєР°РєРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР·РёС†РёР№ РЅРµРѕР±С…РѕРґРёРјРѕ СЃРґРІРёРЅСѓС‚СЊ РјР°СЃСЃРёРІ РІРїСЂР°РІРѕ:   ";
 	cin >> step;
 	shiftRight(arr, size, step);
 	shiftRight(brr, size, step);
@@ -170,8 +170,8 @@ void main()
 	shiftRight(drr, size, step);
 	cout << DIF << endl << endl;
 	
-	cout << endl << endl << "Для сортировки по ээлементов массивов по возрастанию нажмите 1";
-	cout << endl << endl << "Для сортировки по ээлементов массивов по убыванию нажмите 0";
+	cout << endl << endl << "Р”Р»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё РїРѕ СЌСЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІРѕРІ РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ РЅР°Р¶РјРёС‚Рµ 1";
+	cout << endl << endl << "Р”Р»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё РїРѕ СЌСЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІРѕРІ РїРѕ СѓР±С‹РІР°РЅРёСЋ РЅР°Р¶РјРёС‚Рµ 0";
 	do
 	{
 		key = _getch();
@@ -181,7 +181,7 @@ void main()
 			Sort_down(brr, size);
 			Sort_down(crr, size);
 			Sort_down(drr, size);
-			cout << endl << "Массивы по убыванию " << endl << endl;
+			cout << endl << "РњР°СЃСЃРёРІС‹ РїРѕ СѓР±С‹РІР°РЅРёСЋ " << endl << endl;
 			Print(arr, size);
 			Print(brr, size);
 			Print(crr, size);
@@ -196,7 +196,7 @@ void main()
 			Sort_up(brr, size);
 			Sort_up(crr, size);
 			Sort_up(drr, size);
-			cout << endl << "Массивы по возрастанию " << endl << endl;
+			cout << endl << "РњР°СЃСЃРёРІС‹ РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ " << endl << endl;
 			Print(arr, size);
 			Print(brr, size);
 			Print(crr, size);
@@ -204,10 +204,10 @@ void main()
 			cout << endl << DIF << endl << endl;
 			break;
 		}
-		else cout << "Повторите ввод";
+		else cout << "РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ";
 	} while (key != 48 || key != 49);
 
-	cout << endl << endl << "Для замены повторяющихся ээлементов массива нажмите Enter    ";
+	cout << endl << endl << "Р”Р»СЏ Р·Р°РјРµРЅС‹ РїРѕРІС‚РѕСЂСЏСЋС‰РёС…СЃСЏ СЌСЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР° РЅР°Р¶РјРёС‚Рµ Enter    ";
 	key = _getch();
 	while (key != 13) key = _getch();
 	UniqueRand(arr, size);
@@ -216,12 +216,12 @@ void main()
 	UniqueRand(drr, size);
 	cout << endl << DIF << endl << endl;
 
-	cout << endl << endl << "Для продолжения нажмите Enter    ";
+	cout << endl << endl << "Р”Р»СЏ РїСЂРѕРґРѕР»Р¶РµРЅРёСЏ РЅР°Р¶РјРёС‚Рµ Enter    ";
 	key = _getch();
 	while (key != 13) key = _getch();
 
 	system("CLS");
-	cout << "  Для вывода нового массива нажмите Enter" << endl << endl;
+	cout << "  Р”Р»СЏ РІС‹РІРѕРґР° РЅРѕРІРѕРіРѕ РјР°СЃСЃРёРІР° РЅР°Р¶РјРёС‚Рµ Enter" << endl << endl;
 	key = _getch();
 	while (key != 13) key = _getch();
 	FillRand_1(arr, size);
@@ -774,7 +774,7 @@ void UniqueRand(char arr[], int size)
 		for (int j = 0; j < size; j++)
 		{
 			if (i == j) continue;
-			else if (arr[i] == arr[j]) arr[j] = char(rand() % 255);//что-то не работает для char
+			else if (arr[i] == arr[j]) arr[j] = char(rand() % 255);//С‡С‚Рѕ-С‚Рѕ РЅРµ СЂР°Р±РѕС‚Р°РµС‚ РґР»СЏ char
 		}
 	}
 
@@ -930,7 +930,7 @@ void Sort_down(char arr[], int size)
 void Search(int arr[], int size)
 {
 	int count;
-	cout << endl << "Значение\t\tКоличество повторений" << endl << endl;
+	cout << endl << "Р—РЅР°С‡РµРЅРёРµ\t\tРљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕРІС‚РѕСЂРµРЅРёР№" << endl << endl;
 	for (int i = 0;i < size;i++)
 	{
 		count = 1;
