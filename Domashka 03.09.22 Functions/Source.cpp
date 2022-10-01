@@ -21,69 +21,32 @@ void FillRand(char arr[ROWS][COLLS], int ROWS, int COLLS);
 
 void FillRand_1(int arr[], int size);//Заполнение массива повторяющимися числами
 
-void Print (int arr[], int size);
-void Print(double arr[], int size);
-void Print(float arr[], int size);
-void Print(char arr[], int size);
+template<typename T> void Print (T arr[], int size);
 
-void Print(int arr[ROWS][COLLS], int ROWS, int COLLS);
-void Print(double arr[ROWS][COLLS], int ROWS, int COLLS);
-void Print(float arr[ROWS][COLLS], int ROWS, int COLLS);
-void Print(char arr[ROWS][COLLS], int ROWS, int COLLS);
+template<typename T> void Print(T arr[ROWS][COLLS], int ROWS, int COLLS);
 
-void ReversePrint(int arr[], int size);
-void ReversePrint(double arr[], int size);
-void ReversePrint(float arr[], int size);
-void ReversePrint(char arr[], int size);
+template<typename T> void ReversePrint(T arr[], int size);
 
-int Sum(int arr[], int size);
-double Sum(double arr[], int size);
-float Sum(float arr[], int size);
-char Sum(char arr[], int size);
+template<typename T> T Sum(T arr[], int size);
 
+template<typename T> T Avg(T arr[], int size);
 
-double Avg(int arr[], int size);
-double Avg(double arr[], int size);
-double Avg(float arr[], int size);
-char Avg(char arr[], int size);
+template<typename T> T minValueIn(T arr[], int size);
 
-int minValueIn(int arr[], int size);
-double minValueIn(double arr[], int size);
-float minValueIn(float arr[], int size);
-char minValueIn(char arr[], int size);
+template<typename T> T maxValueIn(T arr[], int size);
 
-int maxValueIn(int arr[], int size);
-double maxValueIn(double arr[], int size);
-float maxValueIn(float arr[], int size);
-char maxValueIn(char arr[], int size);
+template<typename T> void shiftLeft(int arr[], int size, int step);
 
+template<typename T> void shiftRight(T arr[], int size, int step);
 
-void shiftLeft(int arr[], int size, int step);
-void shiftLeft(double arr[], int size, int step);
-void shiftLeft(float arr[], int size, int step);
-void shiftLeft(char arr[], int size, int step);
+template<typename T> void Sort_up(int arr[], int size); //сортировкa массива
 
-void shiftRight(int arr[], int size, int step);
-void shiftRight(double arr[], int size, int step);
-void shiftRight(float arr[], int size, int step);
-void shiftRight(char arr[], int size, int step);
-
-
-void Sort_up(int arr[], int size); //Олег, еще добавила сортировку массива
-void Sort_up(double arr[], int size);
-void Sort_up(float arr[], int size);
-void Sort_up(char arr[], int size);
-
-void Sort_down(int arr[], int size);
-void Sort_down(double arr[], int size);
-void Sort_down(float arr[], int size);
-void Sort_down(char arr[], int size);
+template<typename T> void Sort_down(T arr[], int size);
 
 void Search(int arr[], int size);// и поиск повторяющихся чисел 
-void UniqueRand(int arr[], int size);
-void UniqueRand(double arr[], int size);
-void UniqueRand(float arr[], int size);
-void UniqueRand(char arr[], int size);
+
+template<typename T> void UniqueRand(T arr[], int size);
+
 
 
 void main()
@@ -344,7 +307,8 @@ void FillRand_1(int arr[], int size)
 	for (int i = 0;i < size;i++)
 		arr[i] = rand() % size/2;
 }
-void Print(int arr[], int size)
+
+template<typename T> void Print(T arr[], int size)
 {
 	cout << endl << endl;
 	for (int i = 0;i < size; i++)
@@ -353,33 +317,7 @@ void Print(int arr[], int size)
 	}
 }
 
-void Print(double arr[], int size)
-{
-	cout << endl << endl;
-	for (int i = 0;i < size; i++)
-	{
-		cout << setprecision (2)<<arr[i] << "\t";
-	}
-}
-
-void Print(float arr[], int size)
-{
-	cout << endl << endl;
-	for (int i = 0;i < size; i++)
-	{
-		cout << setprecision(3) << arr[i] << "\t";
-	}
-}
-void Print(char arr[], int size)
-{
-	cout << endl << endl;
-	for (int i = 0;i < size; i++)
-	{
-		cout << char (arr[i]) << "\t";
-	}
-}
-
-void Print(int arr[ROWS][COLLS], int ROWS, int COLLS)
+template<typename T> void Print(T arr[ROWS][COLLS], int ROWS, int COLLS)
 {
 	cout << endl << endl;
 	for (int i = 0;i < ROWS; i++)
@@ -390,40 +328,7 @@ void Print(int arr[ROWS][COLLS], int ROWS, int COLLS)
 	
 }
 
-void Print(double arr[ROWS][COLLS], int ROWS, int COLLS)
-{
-	cout << endl << endl;
-	for (int i = 0;i < ROWS; i++)
-	{
-		for (int j = 0;j < COLLS; j++) cout << arr[i][j] << "\t";
-		cout << endl << endl;
-	}
-	
-}
-
-void Print(float arr[ROWS][COLLS], int ROWS, int COLLS)
-{
-	cout << endl << endl;
-	for (int i = 0;i < ROWS; i++)
-	{
-		for (int j = 0;j < COLLS; j++) cout << arr[i][j] << "\t";
-		cout << endl << endl;
-	}
-	
-}
-
-void Print(char arr[ROWS][COLLS], int ROWS, int COLLS)
-{
-	cout << endl << endl;
-	for (int i = 0;i < ROWS; i++)
-	{
-		for (int j = 0;j < COLLS; j++) cout << char(arr[i][j]) << "\t";
-		cout << endl << endl;
-	}
-	
-}
-
-void ReversePrint(int arr[], int size)
+template<typename T> void ReversePrint(T arr[], int size)
 {
 	cout << endl << endl;
 	for (int i = size-1;i >= 0; i--)
@@ -432,36 +337,9 @@ void ReversePrint(int arr[], int size)
 	}
 }
 
-void ReversePrint(double arr[], int size)
+template<typename T> T Sum(T arr[], int size) 
 {
-	cout << endl << endl;
-	for (int i = size - 1;i >= 0; i--)
-	{
-		cout << arr[i] << "\t";
-	}
-}
-
-void ReversePrint(float arr[], int size)
-{
-	cout << endl << endl;
-	for (int i = size - 1;i >= 0; i--)
-	{
-		cout << arr[i] << "\t";
-	}
-}
-
-void ReversePrint(char arr[], int size)
-{
-	cout << endl << endl;
-	for (int i = size - 1;i >= 0; i--)
-	{
-		cout << char(arr[i]) << "\t";
-	}
-}
-
-int Sum(int arr[], int size) 
-{
-	int sum = 0;
+	T sum = 0;
 	for (int i = 0;i < 10; i++)
 	{
 		sum += arr[i];
@@ -469,60 +347,14 @@ int Sum(int arr[], int size)
 	return (sum);
 }
 
-double Sum(double arr[], int size)
-{
-	double sum = 0;
-	for (int i = 0;i < 10; i++)
-	{
-		sum += arr[i];
-	}
-	return (sum);
-}
-
-float Sum(float arr[], int size)
-{
-	float sum = 0;
-	for (int i = 0;i < 10; i++)
-	{
-		sum += arr[i];
-	}
-	return (sum);
-}
-
-char Sum(char arr[], int size)
-{
-	int sum = 0;
-	for (int i = 0;i < 10; i++)
-	{
-		sum += arr[i];
-	}
-	sum = sum % 255;
-	return (char(sum));
-}
-
-double Avg(int arr[], int size)
+template<typename T> T Avg(T arr[], int size)
 {
    return Sum(arr,size)/double(size);
 }
 
-double Avg(double arr[], int size)
+template<typename T> T minValueIn(T arr[], int size)
 {
-    return Sum(arr,size)/size;
-}
-
-double Avg (float arr[], int size)
-{
-	return Sum(arr, size) / size;
-}
-
-char Avg(char arr[], int size)
-{
-	return char(Sum(arr, size) / size);
-}
-
-int minValueIn(int arr[], int size)
-{
-	int minValue = arr[0];
+	T minValue = arr[0];
 	for (int i = 0;i < size;i++)
 	{
 		if (minValue > arr[i]) minValue = arr[i];
@@ -530,39 +362,9 @@ int minValueIn(int arr[], int size)
 	return (minValue);
 }
 
-double minValueIn(double arr[], int size)
+template<typename T> T maxValueIn(T arr[], int size)
 {
-	double minValue = arr[0];
-	for (int i = 0;i < size;i++)
-	{
-		if (minValue > arr[i]) minValue = arr[i];
-	}
-	return (minValue);
-}
-
-float minValueIn(float arr[], int size)
-{
-	float minValue = arr[0];
-	for (int i = 0;i < size;i++)
-	{
-		if (minValue > arr[i]) minValue = arr[i];
-	}
-	return (minValue);
-}
-
-char minValueIn(char arr[], int size)
-{
-	char minValue = arr[0];
-	for (int i = 0;i < size;i++)
-	{
-		if (minValue > arr[i]) minValue = arr[i];
-	}
-	return (char (minValue));
-}
-
-int maxValueIn(int arr[], int size)
-{
-	int maxValue = arr[0];
+	T maxValue = arr[0];
 	for (int i = 0;i < size;i++)
 	{
 		if (maxValue < arr[i]) maxValue = arr[i];
@@ -570,38 +372,9 @@ int maxValueIn(int arr[], int size)
 	return (maxValue);
 }
 
-double maxValueIn(double arr[], int size)
+template<typename T> void shiftRight(T arr[], int size, int step)
 {
-	double maxValue = arr[0];
-	for (int i = 0;i < size;i++)
-	{
-		if (maxValue < arr[i]) maxValue = arr[i];
-	}
-	return (maxValue);
-}
-
-float maxValueIn(float arr[], int size)
-{
-	float maxValue = arr[0];
-	for (int i = 0;i < size;i++)
-	{
-		if (maxValue < arr[i]) maxValue = arr[i];
-	}
-	return (maxValue);
-}
-
-char maxValueIn(char arr[], int size)
-{
-	char maxValue = arr[0];
-	for (int i = 0;i < size;i++)
-	{
-		if (maxValue < arr[i]) maxValue = arr[i];
-	}
-	return (char(maxValue));
-}
-void shiftRight(int arr[], int size, int step)
-{
-	int sdvig = 0;
+	T sdvig = 0;
 	for (int i = 0;i < step;i++)
 	{
 		sdvig = arr[size-1];
@@ -629,98 +402,9 @@ void shiftRight(int arr[], int size, int step)
 
 }
 
-void shiftRight(double arr[], int size, int step)
+template<typename T> void shiftLeft(T arr[], int size, int step)
 {
-	double sdvig = 0;
-	for (int i = 0;i < step;i++)
-	{
-		sdvig = arr[size - 1];
-		for (int j = size - 1; j > 0; j--)
-		{
-			arr[j] = arr[j - 1];
-		}
-		arr[0] = sdvig;
-	}
-	cout << endl << endl;
-	for (int i = 0;i < size;i++)
-	{
-		cout << arr[i] << "\t";
-	}
-	for (int i = 0;i < step;i++)
-	{
-		sdvig = arr[0];
-		for (int j = 0; j < size - 1; j++)
-		{
-			arr[j] = arr[j + 1];
-		}
-		arr[size - 1] = sdvig;
-	}
-
-}
-
-void shiftRight(float arr[], int size, int step)
-{
-	float sdvig = 0;
-	for (int i = 0;i < step;i++)
-	{
-		sdvig = arr[size - 1];
-		for (int j = size - 1; j > 0; j--)
-		{
-
-			arr[j] = arr[j - 1];
-		}
-		arr[0] = sdvig;
-	}
-	cout << endl << endl;
-	for (int i = 0;i < size;i++)
-	{
-		cout << arr[i] << "\t";
-	}
-	for (int i = 0;i < step;i++)
-	{
-		sdvig = arr[0];
-		for (int j = 0; j < size - 1; j++)
-		{
-			arr[j] = arr[j + 1];
-		}
-		arr[size - 1] = sdvig;
-	}
-
-}
-
-void shiftRight(char arr[], int size, int step)
-{
-	char sdvig = 0;
-	for (int i = 0;i < step;i++)
-	{
-		sdvig = arr[size - 1];
-		for (int j = size - 1; j > 0; j--)
-		{
-
-			arr[j] = arr[j - 1];
-		}
-		arr[0] = sdvig;
-	}
-	cout << endl << endl;
-	for (int i = 0;i < size;i++)
-	{
-		cout << char(arr[i]) << "\t";
-	}
-	for (int i = 0;i < step;i++)
-	{
-		sdvig = arr[0];
-		for (int j = 0; j < size - 1; j++)
-		{
-			arr[j] = arr[j + 1];
-		}
-		arr[size - 1] = sdvig;
-	}
-
-}
-
-void shiftLeft(int arr[], int size, int step)
-{
-	int sdvig = 0;
+	T sdvig = 0;
 	for (int i = 0;i < step;i++)
 	{
 		sdvig = arr[0];
@@ -748,97 +432,7 @@ void shiftLeft(int arr[], int size, int step)
 
 }
 
-void shiftLeft(double arr[], int size, int step)
-{
-	double sdvig = 0;
-	for (int i = 0;i < step;i++)
-	{
-		sdvig = arr[0];
-		for (int j = 0; j < size - 1; j++)
-		{
-			arr[j] = arr[j + 1];
-		}
-		arr[size - 1] = sdvig;
-	}
-	cout << endl << endl;
-	for (int i = 0;i < size;i++)
-	{
-		cout << arr[i] << "\t";
-	}
-
-	for (int i = 0;i < step;i++)
-	{
-		sdvig = arr[size - 1];
-		for (int j = size - 1; j > 0; j--)
-		{
-			arr[j] = arr[j - 1];
-		}
-		arr[0] = sdvig;
-	}
-
-}
-
-void shiftLeft(float arr[], int size, int step)
-{
-	float sdvig = 0;
-	for (int i = 0;i < step;i++)
-	{
-		sdvig = arr[0];
-		for (int j = 0; j < size - 1; j++)
-		{
-			arr[j] = arr[j + 1];
-		}
-		arr[size - 1] = sdvig;
-	}
-	cout << endl << endl;
-	for (int i = 0;i < size;i++)
-	{
-		cout << arr[i] << "\t";
-	}
-
-	for (int i = 0;i < step;i++)
-	{
-		sdvig = arr[size - 1];
-		for (int j = size - 1; j > 0; j--)
-		{
-			arr[j] = arr[j - 1];
-		}
-		arr[0] = sdvig;
-	}
-
-}
-
-void shiftLeft(char arr[], int size, int step)
-{
-	char sdvig = 0;
-	for (int i = 0;i < step;i++)
-	{
-		sdvig = arr[0];
-		for (int j = 0; j < size - 1; j++)
-		{
-			arr[j] = arr[j + 1];
-		}
-		arr[size - 1] = sdvig;
-	}
-	cout << endl << endl;
-	for (int i = 0;i < size;i++)
-	{
-		cout << char(arr[i]) << "\t";
-	}
-
-	for (int i = 0;i < step;i++)
-	{
-		sdvig = arr[size - 1];
-		for (int j = size - 1; j > 0; j--)
-		{
-			arr[j] = arr[j - 1];
-		}
-		arr[0] = sdvig;
-	}
-
-}
-
-void UniqueRand(int arr[], int size)
+template<typename T> void UniqueRand(T arr[], int size)
 {
 	for (int i = 0;i < size;i++)
 	{
@@ -854,59 +448,9 @@ void UniqueRand(int arr[], int size)
 	cout << endl << endl;
 }
 
-void UniqueRand(double arr[], int size)
+template<typename T> void Sort_up(T arr[], int size)
 {
-	for (int i = 0;i < size;i++)
-	{
-		for (int j = 0; j < size; j++)
-		{
-			if (i == j) continue;
-			else if (arr[i] == arr[j])  arr[j] = rand() % 100;
-		}
-	}
-
-	cout << endl;
-	for (int i = 0;i < size;i++) cout << arr[i] << "\t";
-	cout << endl << endl;
-}
-
-
-void UniqueRand(float arr[], int size)
-{
-	for (int i = 0;i < size;i++)
-	{
-		for (int j = 0; j < size; j++)
-		{
-			if (i == j) continue;
-			else if (arr[i] == arr[j])  arr[j] = rand() % 100;
-		}
-	}
-
-	cout << endl;
-	for (int i = 0;i < size;i++) cout << arr[i] << "\t";
-	cout << endl << endl;
-}
-
-
-void UniqueRand(char arr[], int size)
-{
-	for (int i = 0;i < size;i++)
-	{
-		for (int j = 0; j < size; j++)
-		{
-			if (i == j) continue;
-			else if (arr[i] == arr[j]) arr[j] = char(rand() % 255);//что-то не работает для char
-		}
-	}
-
-	cout << endl;
-	for (int i = 0;i < size;i++) cout << char(arr[i]) << "\t";
-	cout << endl << endl;
-}
-
-void Sort_up(int arr[], int size)
-{
-	int buffer;
+	T buffer;
 	for (int i = 0; i < size; i++)
 	{
 		for (int j = i+1; j < size; j++)
@@ -922,63 +466,9 @@ void Sort_up(int arr[], int size)
 
 }
 
-void Sort_up(double arr[], int size)
+template<typename T> void Sort_down(T arr[], int size)
 {
-	double buffer;
-	for (int i = 0; i < size; i++)
-	{
-		for (int j = i + 1; j < size; j++)
-		{
-			if (arr[i] > arr[j])
-			{
-				buffer = arr[j];
-				arr[j] = arr[i];
-				arr[i] = buffer;
-			}
-		}
-	}
-
-}
-
-void Sort_up(float arr[], int size)
-{
-	float buffer;
-	for (int i = 0; i < size; i++)
-	{
-		for (int j = i + 1; j < size; j++)
-		{
-			if (arr[i] > arr[j])
-			{
-				buffer = arr[j];
-				arr[j] = arr[i];
-				arr[i] = buffer;
-			}
-		}
-	}
-
-}
-
-void Sort_up(char arr[], int size)
-{
-	char buffer;
-	for (int i = 0; i < size; i++)
-	{
-		for (int j = i + 1; j < size; j++)
-		{
-			if (arr[i] > arr[j])
-			{
-				buffer = arr[j];
-				arr[j] = arr[i];
-				arr[i] = buffer;
-			}
-		}
-	}
-
-}
-
-void Sort_down(int arr[], int size)
-{
-	int buffer;
+	T buffer;
 	for (int i = 0; i < size; i++)
 	{
 		for (int j = i + 1; j < size; j++)
@@ -994,59 +484,6 @@ void Sort_down(int arr[], int size)
 
 }
 
-void Sort_down(double arr[], int size)
-{
-	double buffer;
-	for (int i = 0; i < size; i++)
-	{
-		for (int j = i + 1; j < size; j++)
-		{
-			if (arr[i] < arr[j])
-			{
-				buffer = arr[j];
-				arr[j] = arr[i];
-				arr[i] = buffer;
-			}
-		}
-	}
-
-}
-
-void Sort_down(float arr[], int size)
-{
-	float buffer;
-	for (int i = 0; i < size; i++)
-	{
-		for (int j = i + 1; j < size; j++)
-		{
-			if (arr[i] < arr[j])
-			{
-				buffer = arr[j];
-				arr[j] = arr[i];
-				arr[i] = buffer;
-			}
-		}
-	}
-
-}
-
-void Sort_down(char arr[], int size)
-{
-	char buffer;
-	for (int i = 0; i < size; i++)
-	{
-		for (int j = i + 1; j < size; j++)
-		{
-			if (arr[i] < arr[j])
-			{
-				buffer = arr[j];
-				arr[j] = arr[i];
-				arr[i] = buffer;
-			}
-		}
-	}
-
-}
 
 void Search(int arr[], int size)
 {
