@@ -1,52 +1,16 @@
-﻿#include <iostream>
-#include <conio.h>
-#include <iomanip>
-#include <stdlib.h>
-#include <time.h>
-using namespace std;
-
-#define DIF "\n-------------------------------------------------------------------------------\n"
-
-const int ROWS = 5;
-const int COLLS = 3;
-void FillRand(int arr[], int size, int MinRand=0, int MaxRand=100);
-void FillRand(double arr[], int size, int MinRand = 0, int MaxRand = 100);
-void FillRand(float arr[], int size, int MinRand = 0, int MaxRand = 100);
-void FillRand(char arr[], int size);
-
-void FillRand(int arr[ROWS][COLLS], int ROWS, int COLLS, int MinRand = 0, int MaxRand = 100);
-void FillRand(double arr[ROWS][COLLS], int ROWS, int COLLS, int MinRand = 0, int MaxRand = 100);
-void FillRand(float arr[ROWS][COLLS], int ROWS, int COLLS, int MinRand = 0, int MaxRand = 100);
-void FillRand(char arr[ROWS][COLLS], int ROWS, int COLLS);
-
-void FillRand_1(int arr[], int size);//Заполнение массива повторяющимися числами
-
-template<typename T> void Print (T arr[], int size);
-
-template<typename T> void Print(T arr[ROWS][COLLS], int ROWS, int COLLS);
-
-template<typename T> void ReversePrint(T arr[], int size);
-
-template<typename T> T Sum(T arr[], int size);
-
-template<typename T> T Avg(T arr[], int size);
-
-template<typename T> T minValueIn(T arr[], int size);
-
-template<typename T> T maxValueIn(T arr[], int size);
-
-template<typename T> void shiftLeft(int arr[], int size, int step);
-
-template<typename T> void shiftRight(T arr[], int size, int step);
-
-template<typename T> void Sort_up(int arr[], int size); //сортировкa массива
-
-template<typename T> void Sort_down(T arr[], int size);
-
-void Search(int arr[], int size);// и поиск повторяющихся чисел 
-
-template<typename T> void UniqueRand(T arr[], int size);
-
+﻿#include "stdafx.h"
+#include "constants.h"
+#include "template_print.h"
+#include "template_print.cpp"
+#include "FillRand.h"
+#include "Statistics.h"
+#include "Statistics.cpp"
+#include "Shift.h"
+#include "Shift.cpp"
+#include "Sort_Search.h"
+#include "Sort_Search.cpp"
+#include "UniqueRand.h"
+#include "UniqueRand.cpp"
 
 
 void main()
@@ -69,7 +33,7 @@ void main()
 
 	srand(time(NULL));
 
-   /* FillRand(arr, size);
+    FillRand(arr, size);
 	FillRand(brr, size);
 	FillRand(crr, size);
 	FillRand(drr, size);
@@ -206,7 +170,7 @@ void main()
 	FillRand_1(arr, size);
 	Print(arr, size);
 	cout << endl << endl;
-	Search(arr, size); */
+	Search(arr, size); 
 
 	cout << endl << endl << "Для продолжения нажмите Enter    ";
 	key = _getch();
@@ -224,293 +188,4 @@ void main()
 	Print(crr_1, ROWS, COLLS);
 	Print(drr_1, ROWS, COLLS);
 	cout << DIF;
-}
-
-void FillRand(int arr[], int size, int MinRand, int MaxRand)
-{
-	for (int i = 0;i < size;i++)
-		arr[i] = rand() % (MaxRand-MinRand) + MinRand;
-}
-
-void FillRand(double arr[], int size, int MinRand, int MaxRand)
-{
-	for (int i = 0;i < size;i++)
-	{
-		arr[i] = (rand() % (MaxRand - MinRand) + MinRand);
-	    arr[i] /= 100;
-    }
-}
-
-void FillRand(float arr[], int size, int MinRand, int MaxRand)
-{
-	for (int i = 0;i < size;i++)
-	{
-		arr[i] = (rand() % (MaxRand - MinRand) + MinRand);
-		arr[i] /= 100;
-	}
-}
-
-void FillRand(char arr[], int size)
-{
-	for (int i = 0;i < size;i++)
-		arr[i] = char(rand() % 255) ;
-}
-
-void FillRand(int arr[ROWS][COLLS], int ROWS, int COLLS, int MinRand, int MaxRand)
-{
-	for (int i = 0;i < ROWS;i++)
-	{
-		for (int j = 0; j < COLLS; j++)
-		{
-        arr[i][j] = (rand() % (MaxRand - MinRand) + MinRand);
-		}
-	}
-}
-
-void FillRand(double arr[ROWS][COLLS], int ROWS, int COLLS, int MinRand, int MaxRand)
-{
-	for (int i = 0;i < ROWS;i++)
-	{
-		for (int j = 0; j < COLLS; j++)
-		{
-			arr[i][j] = (rand() % (MaxRand - MinRand) + MinRand);
-			arr[i][j] /= 100;
-		}
-	}
-}
-
-void FillRand(float arr[ROWS][COLLS], int ROWS, int COLLS, int MinRand, int MaxRand)
-{
-	for (int i = 0;i < ROWS;i++)
-	{
-		for (int j = 0; j < COLLS; j++)
-		{
-			arr[i][j] = (rand() % (MaxRand - MinRand) + MinRand);
-			arr[i][j] /= 100;
-		}
-	}
-}
-
-void FillRand(char arr[ROWS][COLLS], int ROWS, int COLLS)
-{
-	for (int i = 0;i < ROWS;i++)
-	{
-		for (int j = 0; j < COLLS; j++)
-		{
-			arr[i][j] = char(rand() % 255);
-		}
-	}
-}
-
-void FillRand_1(int arr[], int size)
-{
-	for (int i = 0;i < size;i++)
-		arr[i] = rand() % size/2;
-}
-
-template<typename T> void Print(T arr[], int size)
-{
-	cout << endl << endl;
-	for (int i = 0;i < size; i++)
-	{
-		cout << arr[i] << "\t";
-	}
-}
-
-template<typename T> void Print(T arr[ROWS][COLLS], int ROWS, int COLLS)
-{
-	cout << endl << endl;
-	for (int i = 0;i < ROWS; i++)
-	{
-		for (int j = 0;j < COLLS; j++) cout << arr[i][j] << "\t";
-		cout << endl << endl;
-	}
-	
-}
-
-template<typename T> void ReversePrint(T arr[], int size)
-{
-	cout << endl << endl;
-	for (int i = size-1;i >= 0; i--)
-	{
-		cout << arr[i] << "\t";
-	}
-}
-
-template<typename T> T Sum(T arr[], int size) 
-{
-	T sum = 0;
-	for (int i = 0;i < 10; i++)
-	{
-		sum += arr[i];
-	}
-	return (sum);
-}
-
-template<typename T> T Avg(T arr[], int size)
-{
-   return Sum(arr,size)/double(size);
-}
-
-template<typename T> T minValueIn(T arr[], int size)
-{
-	T minValue = arr[0];
-	for (int i = 0;i < size;i++)
-	{
-		if (minValue > arr[i]) minValue = arr[i];
-	}
-	return (minValue);
-}
-
-template<typename T> T maxValueIn(T arr[], int size)
-{
-	T maxValue = arr[0];
-	for (int i = 0;i < size;i++)
-	{
-		if (maxValue < arr[i]) maxValue = arr[i];
-	}
-	return (maxValue);
-}
-
-template<typename T> void shiftRight(T arr[], int size, int step)
-{
-	T sdvig = 0;
-	for (int i = 0;i < step;i++)
-	{
-		sdvig = arr[size-1];
-		for (int j = size-1; j >0; j--)
-		{
-		
-			arr[j] = arr[j - 1];
-		}
-		arr[0] = sdvig;
-	}
-	cout << endl << endl;
-	for (int i = 0;i < size;i++)
-	{
-		cout << arr[i] << "\t";
-	}
-	for (int i = 0;i < step;i++)
-	{
-		sdvig = arr[0];
-		for (int j = 0; j < size-1; j++)
-		{
-			arr[j] = arr[j + 1];
-		}
-		arr[size-1] = sdvig;
-	}
-
-}
-
-template<typename T> void shiftLeft(T arr[], int size, int step)
-{
-	T sdvig = 0;
-	for (int i = 0;i < step;i++)
-	{
-		sdvig = arr[0];
-		for (int j = 0; j <size-1; j++)
-		{
-			arr[j] = arr[j+1];
-		}
-		arr[size-1] = sdvig;
-	}
-	cout << endl << endl;
-	for (int i = 0;i < size;i++)
-	{
-		cout << arr[i] << "\t";
-	}
-
-	for (int i = 0;i < step;i++)
-	{
-		sdvig = arr[size-1];
-		for (int j = size-1; j >0; j--)
-		{
-			arr[j] = arr[j -1];
-		}
-		arr[0] = sdvig;
-	}
-
-}
-
-template<typename T> void UniqueRand(T arr[], int size)
-{
-	for (int i = 0;i < size;i++)
-	{
-		for (int j = 0; j < size; j++)
-		{
-			if (i == j) continue;
-			else if (arr[i] == arr[j])  arr[j] = rand() % 100;
-		}
-	}
-
-	cout << endl;
-	for (int i = 0;i < size;i++) cout << arr[i] << "\t";
-	cout << endl << endl;
-}
-
-template<typename T> void Sort_up(T arr[], int size)
-{
-	T buffer;
-	for (int i = 0; i < size; i++)
-	{
-		for (int j = i+1; j < size; j++)
-		{
-			if (arr[i] > arr[j])
-			{
-				buffer = arr[j];
-				arr[j] = arr[i];
-				arr[i] = buffer;
-			}
-		}
-	}
-
-}
-
-template<typename T> void Sort_down(T arr[], int size)
-{
-	T buffer;
-	for (int i = 0; i < size; i++)
-	{
-		for (int j = i + 1; j < size; j++)
-		{
-			if (arr[i] < arr[j])
-			{
-				buffer = arr[j];
-				arr[j] = arr[i];
-				arr[i] = buffer;
-			}
-		}
-	}
-
-}
-
-
-void Search(int arr[], int size)
-{
-	int count;
-	cout << endl << "Значение\t\tКоличество повторений" << endl << endl;
-	for (int i = 0;i < size;i++)
-	{
-		count = 1;
-		for (int j=0; j < size;j++)
-		{
-			if (i == j) continue;
-			if (arr[i] == arr[j])
-			{
-				count++;
-			}
-		}
-		for (int j = 0;j <= i;j++)
-		{
-			if (i == j) continue;
-			if (arr[i] != arr[j]) continue;
-			else if (count > 1)
-			{
-				cout << arr[i] << "\t\t\t" << count << endl << endl;
-				
-			}
-		}
-
-
-	}
 }
