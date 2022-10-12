@@ -39,30 +39,26 @@ template<typename T> void Sort_down(T arr[], int size)
 
 template<typename T> void Search(T arr[], int size)
 {
-	int count;
 	cout << endl << "Значение\t\tКоличество повторений" << endl << endl;
-	for (int i = 0;i < size;i++)
+	int count;
+	int buffer;
+	bool help;
+	cout << endl << endl << "Значение" << "\t" << "Количество повторений" << endl << endl;
+	for (int i = 0; i < size; i++)
 	{
-		count = 1;
-		for (int j = 0; j < size;j++)
+		help = 1;
+		count = 0;
+		buffer = arr[i];
+		for (int k = i - 1;k >= 0;k--)
 		{
-			if (i == j) continue;
-			if (arr[i] == arr[j])
-			{
-				count++;
-			}
+			if (i == 0) break;
+			if (arr[k] == buffer) help = 0;
 		}
-		for (int j = 0;j <= i;j++)
+		if (help == 0) continue;
+		else for (int j = 0;j < 10;j++)
 		{
-			if (i == j) continue;
-			if (arr[i] != arr[j]) continue;
-			else if (count > 1)
-			{
-				cout << arr[i] << "\t\t\t" << count << endl << endl;
-
-			}
+			if (buffer == arr[j]) count++;
 		}
-
-
+		if (count > 1) cout << buffer << "\t\t" << --count << endl;
 	}
 }
